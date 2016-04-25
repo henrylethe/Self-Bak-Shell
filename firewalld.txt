@@ -1,0 +1,34 @@
+yum install epel-release
+yum update
+yum install firewalld
+systemctl start firewalld
+systemctl enable firewalld
+
+vim /usr/lib/firewalld/services/ssh.xml
+# Change the port number
+
+vim /usr/lib/firewalld/services/shadowsocks.xml
+# Start
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>ss</short>
+  <description>Shadowsocks</description>
+  <port protocol="tcp" port="22"/>
+  <port protocol="udp" port="22"/>
+</service>
+# End
+
+vim /usr/lib/firewalld/services/ocserv.xml
+# Start
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>ocserv</short>
+  <description>Cisco AnyConnect</description>
+  <port protocol="tcp" port="443"/>
+</service>
+# End
+
+firewall-cmd --permanent --add-service=shadowsocks
+firewall-cmd --permanent --remove-service=shadowsocks
+firewall-cmd --zone=public --list-all
+firewall-cmd --reload

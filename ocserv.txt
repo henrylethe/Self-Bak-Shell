@@ -6,8 +6,8 @@ firewall-cmd --permanent --add-masquerade
 firewall-cmd --reload
 
 # Copy the following cert 
-# /etc/ocserv/pki/server/server.crt
-# /etc/ocserv/pki/server/server.key
+# /etc/ocserv/cert/server.crt
+# /etc/ocserv/cert/server.key
 
 # Edit the conf file
 vim /etc/ocserv/ocserv.conf

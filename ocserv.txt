@@ -1,0 +1,21 @@
+# Install ocserv
+yum install -y ocserv
+
+# Modify firewall rules
+firewall-cmd --permanent --add-masquerade
+firewall-cmd --reload
+
+# Edit the conf file
+vim /etc/ocserv/ocserv.conf
+
+# Start at boot
+vim /etc/supervisord.conf
+# Start
+[program:ocserv]
+command=systemctl start ocserv.service
+autostart=true
+autorestart=true
+user=root
+log_stderr=true
+logfile=/var/log/ocserv.log
+# End

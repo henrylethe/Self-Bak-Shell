@@ -13,8 +13,8 @@ vim /usr/lib/firewalld/services/shadowsocks.xml
 <service>
   <short>ss</short>
   <description>Shadowsocks</description>
-  <port protocol="tcp" port="22"/>
-  <port protocol="udp" port="22"/>
+  <port protocol="tcp" port="port"/>
+  <port protocol="udp" port="port"/>
 </service>
 # End
 
@@ -24,7 +24,8 @@ vim /usr/lib/firewalld/services/ocserv.xml
 <service>
   <short>ocserv</short>
   <description>Cisco AnyConnect</description>
-  <port protocol="tcp" port="443"/>
+  <port protocol="tcp" port="port"/>
+  <port protocol="udp" port="port"/>
 </service>
 # End
 

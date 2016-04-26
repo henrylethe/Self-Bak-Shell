@@ -23,13 +23,13 @@ frontend ss-in
         default_backend ss-out
 backend ss-out
         balance roundrobin
-        server server1 vps_ip:port maxconn 20480
-        server server2 vps_ip:port maxconn 20480
+        server server1 vps_ip:port maxconn 20480 check rise 3 fall 3 weight 3
+        server server2 vps_ip:port maxconn 20480 check rise 3 fall 3 weight 3
 frontend oc-in
         bind *:aliyun_port
         default_backend oc-out
 backend oc-out
-        balance roundrobin
+        balance source
         server server1 vps_ip:port maxconn 20480 check rise 3 fall 3 weight 3
         server server2 vps_ip:port maxconn 20480 check rise 3 fall 3 weight 3
 # End

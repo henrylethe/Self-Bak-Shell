@@ -11,7 +11,6 @@ vim /etc/haproxy/haproxy.cfg
 # Start
 global
         ulimit-n 51200
-
 defaults
         log global
         mode tcp
@@ -19,20 +18,16 @@ defaults
         timeout connect 10000
         timeout client 150000
         timeout server 150000
-
 frontend ss-in
         bind *:aliyun_port
         default_backend ss-out
-
 backend ss-out
         balance roundrobin
         server server1 vps_ip:port maxconn 20480
         server server2 vps_ip:port maxconn 20480
-        
 frontend oc-in
         bind *:aliyun_port
         default_backend oc-out
-
 backend oc-out
         balance roundrobin
         server server1 vps_ip:port maxconn 20480

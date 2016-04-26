@@ -14,8 +14,7 @@ vim /etc/shadowsocks.json
     "password":"your password",
     "timeout":600,
     "method":"aes-256-cfb",
-    "fast_open":true,
-    "workers":1
+    "fast_open":true
 }
 # End
 

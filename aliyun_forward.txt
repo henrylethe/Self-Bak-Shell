@@ -30,8 +30,8 @@ frontend oc-in
         default_backend oc-out
 backend oc-out
         balance roundrobin
-        server server1 vps_ip:port maxconn 20480
-        server server2 vps_ip:port maxconn 20480
+        server server1 vps_ip:port maxconn 20480 check rise 3 fall 3 weight 3
+        server server2 vps_ip:port maxconn 20480 check rise 3 fall 3 weight 3
 # End
 
 service haproxy start

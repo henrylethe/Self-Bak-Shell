@@ -31,5 +31,6 @@ vim /usr/lib/firewalld/services/ocserv.xml
 
 firewall-cmd --permanent --add-service=shadowsocks
 firewall-cmd --permanent --remove-service=dhcpv6-client
-firewall-cmd --zone=public --list-all
+firewall-cmd --permanent --add-masquerade
 firewall-cmd --reload
+firewall-cmd --zone=public --list-all

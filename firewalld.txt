@@ -1,6 +1,6 @@
-yum install epel-release
-yum update
-yum install firewalld
+yum -y install epel-release
+yum -y update
+yum -y install firewalld
 systemctl start firewalld
 systemctl enable firewalld
 
@@ -30,6 +30,6 @@ vim /usr/lib/firewalld/services/ocserv.xml
 # End
 
 firewall-cmd --permanent --add-service=shadowsocks
-firewall-cmd --permanent --remove-service=shadowsocks
+firewall-cmd --permanent --remove-service=dhcpv6-client
 firewall-cmd --zone=public --list-all
 firewall-cmd --reload

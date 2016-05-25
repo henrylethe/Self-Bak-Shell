@@ -1,5 +1,6 @@
 yum -y install epel-release
-# download yum repo on Fedora Copr(https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/) and put it inside /etc/yum.repos.d/
+# download yum repo on Fedora Copr(https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/)
+# and put it inside /etc/yum.repos.d/
 yum -y update
 yum -y install shadowsocks-libev supervisor
 

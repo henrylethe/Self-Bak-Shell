@@ -1,10 +1,6 @@
 # Install ocserv
 yum install -y ocserv
 
-# Modify firewall rules
-firewall-cmd --permanent --add-masquerade
-firewall-cmd --reload
-
 # Copy the following cert 
 # /etc/ocserv/cert/server.crt
 # /etc/ocserv/cert/server.key

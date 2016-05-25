@@ -1,10 +1,9 @@
-yum install epel-release
-yum update
-yum install python-setuptools m2crypto supervisor
-easy_install pip
-pip install shadowsocks
+yum -y install epel-release
+# download yum repo on Fedora Copr(https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/) and put it inside /etc/yum.repos.d/
+yum -y update
+yum -y install shadowsocks-libev supervisor
 
-vim /etc/shadowsocks.json
+vim /etc/shadowsocks-libev/config.json
 # Start
 {
     "server":"0.0.0.0",
@@ -18,10 +17,15 @@ vim /etc/shadowsocks.json
 }
 # End
 
+vim /etc/default/shadowsocks-libev
+# Start
+DAEMON_ARGS="-u -A"
+# End
+
 vim /etc/supervisord.conf
 # Start
 [program:shadowsocks]
-command=ssserver -c /etc/shadowsocks.json
+command=systemctl start shadowsocks-libev
 autostart=true
 autorestart=true
 user=root

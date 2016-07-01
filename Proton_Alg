@@ -1,0 +1,30 @@
+[program:ecg]
+command=/data/bots/runtime/App/ecgproc
+autostart=true
+autorestart=true
+user=root
+log_stderr=true
+logfile=/data/bots/runtime/App/ecg.log
+
+[program:epr]
+command=/data/bots/runtime/App/eprproc
+autostart=true
+autorestart=true
+user=root
+log_stderr=true
+logfile=/data/bots/runtime/App/epr.log
+
+[program:tem]
+command=/data/bots/runtime/App/temproc
+autostart=true
+autorestart=true
+user=root
+log_stderr=true
+logfile=/data/bots/runtime/App/tem.log
+
+# cd /data/bots/runtime/App/
+# g++ cJSON.c ECG_main.cpp ECG_acc.cpp -o ecgproc
+# g++ cJSON.c EPR_main.cpp EPR_acc.cpp -o eprproc
+# g++ cJSON.c TEM_main.cpp TEM_acc.cpp -o temproc
+# supervisord -c /etc/supervisord.conf
+# supervisorctl -c /etc/supervisord.conf  status

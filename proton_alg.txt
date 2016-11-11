@@ -22,6 +22,14 @@ user=root
 log_stderr=true
 logfile=/data/bots/runtime/App/tem.log
 
+[program:com]
+command=/data/bots/runtime/App/comproc
+autostart=true
+autorestart=true
+user=root
+log_stderr=true
+logfile=/data/bots/runtime/App/com.log
+
 # cd /data/bots/runtime/App/
 # g++ cJSON.c ECG_main.cpp ECG_acc.cpp -o ecgproc
 # g++ cJSON.c EPR_main.cpp EPR_acc.cpp -o eprproc

@@ -26,5 +26,6 @@ logfile=/data/bots/runtime/App/tem.log
 # g++ cJSON.c ECG_main.cpp ECG_acc.cpp -o ecgproc
 # g++ cJSON.c EPR_main.cpp EPR_acc.cpp -o eprproc
 # g++ cJSON.c TEM_main.cpp TEM_acc.cpp -o temproc
+# g++ unzip.c ioapi.c Comp_main.cpp Comp_acc.cpp -lz -o comproc
 # supervisord -c /etc/supervisord.conf
 # supervisorctl -c /etc/supervisord.conf  status

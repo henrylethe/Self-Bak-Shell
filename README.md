@@ -1,2 +1,2 @@
 # Self-Bak-Shell
-A bunch of self-use install guides for CentOS 7.
+A bunch of self-use installation guides for CentOS 7.

@@ -23,6 +23,37 @@ vim /etc/default/shadowsocks-libev
 DAEMON_ARGS="-u -A"
 # End
 
+mkdir /home/kcptun
+cd /home/kcptun
+# Find packet url: https://github.com/xtaci/kcptun/releases/latest
+# wget https://github.com/xtaci/kcptun/releases/download/v20161031/kcptun-linux-amd64-*.tar.gz
+tar -zxf kcptun-linux-amd64-*.tar.gz
+
+vim /etc/kcptun_config.json
+# Start
+{
+    "listen": ":port",
+    "target": "127.0.0.1:port",
+    "key": "test",
+    "crypt": "aes-128",
+    "mode": "manual",
+    "mtu": 1400,
+    "sndwnd": 2048,
+    "rcvwnd": 2048,
+    "datashard": 70,
+    "parityshard": 30,
+    "dscp": 46,
+    "nocomp": true,
+    "acknodelay": false,
+    "nodelay": 0,
+    "interval": 40,
+    "resend": 0,
+    "nc": 1,
+    "sockbuf": 4194304,
+    "keepalive": 10
+}
+# End
+
 vim /etc/supervisord.conf
 # Start
 [program:shadowsocks]
@@ -32,6 +63,14 @@ autorestart=true
 user=root
 log_stderr=true
 logfile=/var/log/shadowsocks.log
+
+[program:kcptun]
+command=/home/kcptun/server_linux_amd64 -c /etc/kcptun_config.json
+autostart=true
+autorestart=true
+user=root
+log_stderr=true
+logfile=/var/log/kcptun.log
 # End
 
 vim /etc/rc.local

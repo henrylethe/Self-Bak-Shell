@@ -35,7 +35,7 @@ vim /etc/kcptun_config.json
     "listen": ":port",
     "target": "127.0.0.1:port",
     "key": "test",
-    "crypt": "aes-128",
+    "crypt": "aes",
     "mode": "manual",
     "mtu": 1400,
     "sndwnd": 2048,

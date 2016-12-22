@@ -4,8 +4,15 @@ yum -y install firewalld
 systemctl start firewalld
 systemctl enable firewalld
 
-vim /usr/lib/firewalld/services/ssh.xml
-# Change the port number
+vim /usr/lib/firewalld/services/myssh.xml
+# Start
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>ss</short>
+  <description>Shadowsocks</description>
+  <port protocol="tcp" port="port"/>
+</service>
+# End
 
 vim /usr/lib/firewalld/services/shadowsocks.xml
 # Start
@@ -14,6 +21,16 @@ vim /usr/lib/firewalld/services/shadowsocks.xml
   <short>ss</short>
   <description>Shadowsocks</description>
   <port protocol="tcp" port="port"/>
+  <port protocol="udp" port="port"/>
+</service>
+# End
+
+vim /usr/lib/firewalld/services/kcptun.xml
+# Start
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>kcp</short>
+  <description>Kcptun</description>
   <port protocol="udp" port="port"/>
 </service>
 # End

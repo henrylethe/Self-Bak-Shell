@@ -8,8 +8,8 @@ vim /usr/lib/firewalld/services/myssh.xml
 # Start
 <?xml version="1.0" encoding="utf-8"?>
 <service>
-  <short>ss</short>
-  <description>Shadowsocks</description>
+  <short>ssh</short>
+  <description>MySSH</description>
   <port protocol="tcp" port="port"/>
 </service>
 # End

@@ -57,7 +57,7 @@ vim /etc/kcptun_config.json
 vim /etc/supervisord.conf
 # Start
 [program:shadowsocks]
-command=systemctl start shadowsocks-libev
+command=ss-server -c /etc/shadowsocks-libev/config.json -u -A
 autostart=true
 autorestart=true
 user=root

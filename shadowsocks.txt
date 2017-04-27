@@ -19,6 +19,9 @@ vim /etc/shadowsocks-libev/config.json
 }
 # End
 
+# Just for update
+# ./shadowsocks.sh uninstall 
+
 mkdir /home/kcptun
 cd /home/kcptun
 # Find packet url: https://github.com/xtaci/kcptun/releases/latest

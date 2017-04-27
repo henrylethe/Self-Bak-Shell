@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
-#===================================================================#
-#   System Required:  CentOS 6 or 7                                 #
-#   Description: Install Shadowsocks-libev server for CentOS 6 or 7 #
-#   Author: Teddysun <i@teddysun.com>                               #
-#   Thanks: @madeye <https://github.com/madeye>                     #
-#   Intro:  https://teddysun.com/357.html                           #
-#===================================================================#
 
 # Current folder
 cur_dir=`pwd`
@@ -93,8 +86,6 @@ print_info(){
     clear
     echo "#############################################################"
     echo "# Install Shadowsocks-libev server for CentOS 6 or 7        #"
-    echo "# Intro:  https://teddysun.com/357.html                     #"
-    echo "# Author: Teddysun <i@teddysun.com>                         #"
     echo "# Github: https://github.com/shadowsocks/shadowsocks-libev  #"
     echo "#############################################################"
     echo
@@ -209,8 +200,8 @@ pre_install(){
 
     # Set shadowsocks-libev config password
     echo "Please input password for shadowsocks-libev"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd="teddysun.com"
+    read -p "(Default password: test):" shadowsockspwd
+    [ -z "${shadowsockspwd}" ] && shadowsockspwd="test"
     echo
     echo "---------------------------"
     echo "password = ${shadowsockspwd}"
@@ -221,8 +212,8 @@ pre_install(){
     while true
     do
     echo -e "Please input port for shadowsocks-libev [1-65535]"
-    read -p "(Default port: 8989):" shadowsocksport
-    [ -z "$shadowsocksport" ] && shadowsocksport="8989"
+    read -p "(Default port: 22):" shadowsocksport
+    [ -z "$shadowsocksport" ] && shadowsocksport="22"
     expr ${shadowsocksport} + 0 &>/dev/null
     if [ $? -eq 0 ]; then
         if [ ${shadowsocksport} -ge 1 ] && [ ${shadowsocksport} -le 65535 ]; then
@@ -316,7 +307,7 @@ install_shadowsocks(){
         chmod +x /etc/init.d/shadowsocks
     else
         echo
-        echo "Shadowsocks-libev install failed! Please visit https://teddysun.com/357.html and contact."
+        echo "Shadowsocks-libev install failed!"
         exit 1
     fi
 

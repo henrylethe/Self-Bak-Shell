@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
+#===================================================================#
+#   System Required:  CentOS 6 or 7                                 #
+#   Description: Install Shadowsocks-libev server for CentOS 6 or 7 #
+#   Author: Teddysun <i@teddysun.com>                               #
+#   Thanks: @madeye <https://github.com/madeye>                     #
+#   Intro:  https://teddysun.com/357.html                           #
+#===================================================================#
 
 # Current folder
 cur_dir=`pwd`
@@ -86,6 +93,8 @@ print_info(){
     clear
     echo "#############################################################"
     echo "# Install Shadowsocks-libev server for CentOS 6 or 7        #"
+    echo "# Intro:  https://teddysun.com/357.html                     #"
+    echo "# Author: Teddysun <i@teddysun.com>                         #"
     echo "# Github: https://github.com/shadowsocks/shadowsocks-libev  #"
     echo "#############################################################"
     echo
@@ -307,7 +316,7 @@ install_shadowsocks(){
         chmod +x /etc/init.d/shadowsocks
     else
         echo
-        echo "Shadowsocks-libev install failed!"
+        echo "Shadowsocks-libev install failed! Please visit https://teddysun.com/357.html and contact."
         exit 1
     fi
 

@@ -4,7 +4,7 @@ yum -y install epel-release
 cd /home/
 wget https://raw.githubusercontent.com/henrylethe/Self-Bak-Shell/master/shadowsocks.sh
 chmod +x shadowsocks.sh
-./shadowsocks.sh 2>&1 | tee shadowsocks-libev.log
+./shadowsocks.sh 2>&1 | tee shadowsocks.log
 
 vim /etc/shadowsocks-libev/config.json
 # Start

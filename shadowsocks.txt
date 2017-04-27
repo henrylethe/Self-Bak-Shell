@@ -1,13 +1,15 @@
-yum -y install epel-release
-# download yum repo on Fedora Copr(https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/)
-# and put it inside /etc/yum.repos.d/
 yum -y update
-yum -y install shadowsocks-libev supervisor
+yum -y install epel-release
+
+cd /home/
+wget https://raw.githubusercontent.com/henrylethe/Self-Bak-Shell/master/shadowsocks.sh
+chmod +x shadowsocks.sh
+./shadowsocks.sh 2>&1 | tee shadowsocks-libev.log
 
 vim /etc/shadowsocks-libev/config.json
 # Start
 {
-    "server":"0.0.0.0",
+    "server":["[::0]","0.0.0.0"],
     "server_port":22,
     "local_address":"127.0.0.1",
     "local_port":1080,
@@ -15,11 +17,6 @@ vim /etc/shadowsocks-libev/config.json
     "timeout":600,
     "method":"aes-256-cfb"
 }
-# End
-
-vim /etc/default/shadowsocks-libev
-# Start
-DAEMON_ARGS="-u -A"
 # End
 
 mkdir /home/kcptun

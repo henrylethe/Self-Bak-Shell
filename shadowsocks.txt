@@ -61,8 +61,6 @@ autostart=true
 autorestart=true
 user=root
 redirect_stderr=true
-stdout_logfile_maxbytes=20MB
-stdout_logfile_backups=20
 stdout_logfile=/var/log/supervisor/shadowsocks.log
 
 [program:kcptun]
@@ -71,8 +69,6 @@ autostart=true
 autorestart=true
 user=root
 redirect_stderr=true
-stdout_logfile_maxbytes=20MB
-stdout_logfile_backups=20
 stdout_logfile=/var/log/supervisor/kcptun.log
 # End
 

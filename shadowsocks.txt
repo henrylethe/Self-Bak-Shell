@@ -60,16 +60,20 @@ command=ss-server -c /etc/shadowsocks-libev/config.json -u
 autostart=true
 autorestart=true
 user=root
-redirect_stderr=true
-stdout_logfile=/var/log/supervisor/shadowsocks.log
+stdout_logfile=/var/log/supervisor/shadowsocks_out.log
+stderr_logfile=/var/log/supervisor/shadowsocks_err.log
+stdout_logfile_backups=0
+stderr_logfile_backups=0
 
 [program:kcptun]
 command=/home/kcptun/server_linux_amd64 -c /etc/kcptun_config.json
 autostart=true
 autorestart=true
 user=root
-redirect_stderr=true
-stdout_logfile=/var/log/supervisor/kcptun.log
+stdout_logfile=/var/log/supervisor/kcptun_out.log
+stdout_logfile=/var/log/supervisor/kcptun_err.log
+stdout_logfile_backups=0
+stderr_logfile_backups=0
 # End
 
 vim /etc/rc.local

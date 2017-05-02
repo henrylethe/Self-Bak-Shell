@@ -71,7 +71,7 @@ autostart=true
 autorestart=true
 user=root
 stdout_logfile=/var/log/supervisor/kcptun_out.log
-stdout_logfile=/var/log/supervisor/kcptun_err.log
+stderr_logfile=/var/log/supervisor/kcptun_err.log
 stdout_logfile_backups=0
 stderr_logfile_backups=0
 # End

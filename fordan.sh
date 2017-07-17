@@ -72,16 +72,15 @@ sudo mv "subversion-1.7.19/subversion/mod_authz_svn/.libs/mod_authz_svn.so" './m
 
 echo 'Deleting temporary files…'
 sudo rm -rf "apr-1.6.2"
-sudo rm -f "apr-1.6.2.tar.bz2"
+sudo rm -f "apr-1.6.2.tar"
 sudo rm -rf "apr-util-1.6.0"
-sudo rm -f "apr-util-1.6.0.tar.bz2"
+sudo rm -f "apr-util-1.6.0.tar"
 sudo rm -rf "pcre-8.41"
-sudo rm -f "pcre-8.41.tar.bz2"
+sudo rm -f "pcre-8.41.tar"
 sudo rm -rf "httpd-2.4.27"
-sudo rm -f "httpd-2.4.27.tar.bz2"
-
+sudo rm -f "httpd-2.4.27.tar"
 sudo rm -rf "subversion-1.7.19"
-sudo rm -f "subversion-1.7.19.tar.bz2"
+sudo rm -f "subversion-1.7.19.tar"
 
 printf '\n\nAll done!\n'
 

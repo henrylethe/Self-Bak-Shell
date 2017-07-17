@@ -9,6 +9,8 @@
 
 # Download and unzip files
 echo 'Downloading and unzipping…'
+echo
+
 cd ~/Downloads
 curl 'http://archive.apache.org/dist/apr/apr-1.6.2.tar.bz2' > ~/Downloads/apr-1.6.2.tar.bz2
 bunzip2 apr-1.6.2.tar.bz2
@@ -29,6 +31,8 @@ tar -xf subversion-1.7.19.tar
 # Install dependency
 clear
 echo 'Installing apr…'
+echo
+
 cd ~/Downloads/apr-1.6.2/
 ./configure --prefix=/usr/local/apr
 sudo make
@@ -36,6 +40,8 @@ sudo make install
 
 clear
 echo 'Installing apr-util…'
+echo
+
 cd ~/Downloads/apr-util-1.6.0/
 ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr/
 sudo make
@@ -43,6 +49,8 @@ sudo make install
 
 clear
 echo 'Installing pcre…'
+echo
+
 cd ~/Downloads/pcre-8.41/
 ./configure --prefix=/usr/local/pcre --with-apr=/usr/local/apr/
 sudo make
@@ -50,6 +58,8 @@ sudo make install
 
 clear
 echo 'Installing httpd…'
+echo
+
 cd ~/Downloads/httpd-2.4.27/
 ./configure --prefix=/usr/local/httpd --with-pcre=/usr/local/pcre --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util
 sudo make
@@ -58,6 +68,8 @@ sudo make install
 # Build mods
 clear
 echo 'Compiling mod_dav_svn & mod_authz_svn…'
+echo
+
 cd ~/Downloads/subversion-1.7.19/
 ./configure --prefix=/Applications/Xcode.app/Contents/Developer/usr --disable-debug --with-zlib=/usr --disable-mod-activation --with-apache-libexecdir=$(/usr/local/httpd/bin/apxs -q libexecdir) --without-berkeley-db --disable-nls --without-serf --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --with-apxs="/usr/local/httpd/bin/apxs"
 make mod_dav_svn mod_authz_svn
@@ -70,10 +82,14 @@ otool -L "subversion-1.7.19/subversion/mod_authz_svn/.libs/mod_authz_svn.so"
 
 #  Clean up
 echo 'Copying modules to current directory…'
+echo
+
 sudo mv "subversion-1.7.19/subversion/mod_dav_svn/.libs/mod_dav_svn.so" './mod_dav_svn.so'
 sudo mv "subversion-1.7.19/subversion/mod_authz_svn/.libs/mod_authz_svn.so" './mod_authz_svn.so'
 
 echo 'Deleting temporary files…'
+echo
+
 sudo rm -rf "apr-1.6.2"
 sudo rm -f "apr-1.6.2.tar"
 sudo rm -rf "apr-util-1.6.0"

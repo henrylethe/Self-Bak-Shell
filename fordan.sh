@@ -22,6 +22,9 @@ tar -xf pcre-8.41.tar
 curl 'http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.27.tar.bz2' > ~/Downloads/httpd-2.4.27.tar.bz2
 bunzip2 httpd-2.4.27.tar.bz2
 tar -xf httpd-2.4.27.tar
+curl 'http://archive.apache.org/dist/subversion/subversion-1.7.19.tar.bz2' > ~/Downloads/subversion-1.7.19.tar.bz2
+bunzip2 subversion-1.7.19.tar.bz2
+tar -xf subversion-1.7.19.tar
 
 # Install dependency
 clear

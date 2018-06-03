@@ -45,6 +45,7 @@ vim /etc/kcptun_config.json
     "dscp": 46,
     "nocomp": true,
     "acknodelay": false,
+    "quiet": true,
     "nodelay": 0,
     "interval": 40,
     "resend": 0,

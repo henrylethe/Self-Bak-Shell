@@ -6,9 +6,9 @@ yum -y install shadowsocks-libev
 vim /etc/shadowsocks-libev/config.json
 # Start
 {
-    "server":["[::0]","0.0.0.0"],
-    "server_port":22,
-    "password":"your password",
+    "server":"0.0.0.0",
+    "server_port":port,
+    "password":"password",
     "mode": "tcp_and_udp",
     "timeout":600,
     "method":"aes-256-cfb"

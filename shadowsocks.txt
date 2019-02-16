@@ -1,5 +1,5 @@
 yum -y update
-yum -y install epel-release
+yum -y install epel-release python-setuptools
 
 cd /home/
 wget https://raw.githubusercontent.com/henrylethe/Self-Bak-Shell/master/shadowsocks.sh
@@ -14,46 +14,13 @@ vim /etc/shadowsocks-libev/config.json
     "password":"your password",
     "mode": "tcp_and_udp",
     "timeout":600,
-    "method":"aes-256-cfb",
-    "plugin": "obfs-server",
-    "plugin_opts": "obfs=http"
+    "method":"aes-256-cfb"
 }
 # End
 
-# Just for update
-# ./shadowsocks.sh uninstall 
-
-mkdir /home/kcptun
-cd /home/kcptun
-# Find packet url: https://github.com/xtaci/kcptun/releases/latest
-# wget https://github.com/xtaci/kcptun/releases/download/v20161031/kcptun-linux-amd64-*.tar.gz
-tar -zxf kcptun-linux-amd64-*.tar.gz
-
-vim /etc/kcptun_config.json
-# Start
-{
-    "listen": ":port",
-    "target": "127.0.0.1:port",
-    "key": "test",
-    "crypt": "aes",
-    "mode": "manual",
-    "mtu": 1400,
-    "sndwnd": 2048,
-    "rcvwnd": 2048,
-    "datashard": 70,
-    "parityshard": 30,
-    "dscp": 46,
-    "nocomp": true,
-    "acknodelay": false,
-    "quiet": true,
-    "nodelay": 0,
-    "interval": 40,
-    "resend": 0,
-    "nc": 1,
-    "sockbuf": 4194304,
-    "keepalive": 10
-}
-# End
+easy_install supervisor
+echo_supervisord_conf > /etc/supervisord.conf
+mkdir /var/log/supervisor/
 
 vim /etc/supervisord.conf
 # Start
@@ -64,16 +31,6 @@ autorestart=true
 user=root
 stdout_logfile=/var/log/supervisor/shadowsocks_out.log
 stderr_logfile=/var/log/supervisor/shadowsocks_err.log
-stdout_logfile_backups=0
-stderr_logfile_backups=0
-
-[program:kcptun]
-command=/home/kcptun/server_linux_amd64 -c /etc/kcptun_config.json
-autostart=true
-autorestart=true
-user=root
-stdout_logfile=/var/log/supervisor/kcptun_out.log
-stderr_logfile=/var/log/supervisor/kcptun_err.log
 stdout_logfile_backups=0
 stderr_logfile_backups=0
 # End

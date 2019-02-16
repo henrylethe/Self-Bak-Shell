@@ -25,29 +25,10 @@ vim /usr/lib/firewalld/services/shadowsocks.xml
 </service>
 # End
 
-vim /usr/lib/firewalld/services/kcptun.xml
-# Start
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>kcp</short>
-  <description>Kcptun</description>
-  <port protocol="udp" port="port"/>
-</service>
-# End
-
-vim /usr/lib/firewalld/services/ocserv.xml
-# Start
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>ocserv</short>
-  <description>Cisco AnyConnect</description>
-  <port protocol="tcp" port="port"/>
-  <port protocol="udp" port="port"/>
-</service>
-# End
-
+firewall-cmd --zone=public --list-all
+firewall-cmd --permanent --add-service=myssh
 firewall-cmd --permanent --add-service=shadowsocks
+firewall-cmd --permanent --remove-service=ssh
 firewall-cmd --permanent --remove-service=dhcpv6-client
 firewall-cmd --permanent --add-masquerade
 firewall-cmd --reload
-firewall-cmd --zone=public --list-all

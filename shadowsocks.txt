@@ -1,10 +1,7 @@
+cd /etc/yum.repos.d/
+curl -O https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo
 yum -y update
-yum -y install epel-release python-setuptools
-
-cd /home/
-wget https://raw.githubusercontent.com/henrylethe/Self-Bak-Shell/master/shadowsocks.sh
-chmod +x shadowsocks.sh
-./shadowsocks.sh 2>&1 | tee shadowsocks.log
+yum -y install -y shadowsocks-libev python-setuptools
 
 vim /etc/shadowsocks-libev/config.json
 # Start

@@ -1,7 +1,7 @@
 cd /etc/yum.repos.d/
 curl -O https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo
 yum -y update
-yum -y install -y shadowsocks-libev python-setuptools
+yum -y install shadowsocks-libev
 
 vim /etc/shadowsocks-libev/config.json
 # Start
@@ -14,10 +14,6 @@ vim /etc/shadowsocks-libev/config.json
     "method":"aes-256-cfb"
 }
 # End
-
-easy_install supervisor
-echo_supervisord_conf > /etc/supervisord.conf
-mkdir /var/log/supervisor/
 
 vim /etc/supervisord.conf
 # Start
@@ -32,13 +28,4 @@ stdout_logfile_backups=0
 stderr_logfile_backups=0
 # End
 
-vim /etc/rc.local
-# Start
-supervisord -c /etc/supervisord.conf
-# End
-
-chmod +x /etc/rc.local
-sysctl -w net.ipv4.ip_forward=1
-echo net.ipv4.ip_forward = 1 >> "/etc/sysctl.conf"
-systemctl daemon-reload
 reboot

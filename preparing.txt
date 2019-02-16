@@ -1,5 +1,7 @@
-yum -y install epel-release
+## firewalld START
 yum -y update
+yum -y install epel-release
+
 yum -y install firewalld
 systemctl start firewalld
 systemctl enable firewalld
@@ -32,3 +34,34 @@ firewall-cmd --permanent --remove-service=ssh
 firewall-cmd --permanent --remove-service=dhcpv6-client
 firewall-cmd --permanent --add-masquerade
 firewall-cmd --reload
+## firewalld END
+
+## BBR START
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+yum -y --enablerepo=elrepo-kernel install kernel-ml
+grub2-set-default 0
+
+reboot
+
+yum -y remove kernel kernel-tools
+
+vim /etc/sysctl.conf
+# Start
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+# End
+
+sysctl -p
+
+# Check the status
+sysctl net.ipv4.tcp_available_congestion_control
+sysctl net.ipv4.tcp_congestion_control
+## BBR END
+
+## supervisord START
+yum -y install python-setuptools
+easy_install supervisor
+echo_supervisord_conf > /etc/supervisord.conf
+mkdir /var/log/supervisor/
+## supervisord END

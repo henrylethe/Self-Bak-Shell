@@ -64,4 +64,12 @@ yum -y install python-setuptools
 easy_install supervisor
 echo_supervisord_conf > /etc/supervisord.conf
 mkdir /var/log/supervisor/
+
+vim /etc/rc.local
+# Start
+supervisord -c /etc/supervisord.conf
+# End
+
+chmod +x /etc/rc.local
+reboot
 ## supervisord END

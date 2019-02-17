@@ -8,12 +8,12 @@ systemctl enable haveged
 vim /etc/shadowsocks-libev/config.json
 # Start
 {
-    "server":"0.0.0.0",
+    "server":["[::0]","0.0.0.0"],
     "server_port":port,
     "password":"password",
     "mode": "tcp_and_udp",
     "timeout":600,
-    "method":"aes-256-cfb"
+    "method":"aes-256-gcm"
 }
 # End
 

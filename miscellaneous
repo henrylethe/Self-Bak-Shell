@@ -12,7 +12,7 @@ vim /usr/lib/firewalld/services/myssh.xml
 <service>
   <short>ssh</short>
   <description>MySSH</description>
-  <port protocol="tcp" port="port"/>
+  <port protocol="tcp" port="$port"/>
 </service>
 # End
 
@@ -22,15 +22,9 @@ vim /usr/lib/firewalld/services/shadowsocks.xml
 <service>
   <short>ss</short>
   <description>Shadowsocks</description>
-  <port protocol="tcp" port="port"/>
-  <port protocol="udp" port="port"/>
+  <port protocol="tcp" port="$port"/>
+  <port protocol="udp" port="$port"/>
 </service>
-# End
-
-# Change SSH port
-vim /etc/ssh/sshd_config
-# Start
-Port port
 # End
 
 firewall-cmd --zone=public --list-all
@@ -40,6 +34,18 @@ firewall-cmd --permanent --remove-service=ssh
 firewall-cmd --permanent --remove-service=dhcpv6-client
 firewall-cmd --permanent --add-masquerade
 firewall-cmd --reload
+
+# Change SSH port
+vim /etc/ssh/sshd_config
+# Start
+Port $port
+# End
+
+# Notify SELinux
+yum -y install policycoreutils-python
+semanage port -a -t ssh_port_t -p tcp $port
+# Check the status
+semanage port -l | grep ssh
 ## firewalld END
 
 ## BBR START

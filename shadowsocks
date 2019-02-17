@@ -1,7 +1,9 @@
 cd /etc/yum.repos.d/
 curl -O https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo
 yum -y update
-yum -y install shadowsocks-libev
+yum -y install shadowsocks-libev haveged
+systemctl start haveged
+systemctl enable haveged
 
 vim /etc/shadowsocks-libev/config.json
 # Start

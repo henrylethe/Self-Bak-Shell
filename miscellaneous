@@ -140,4 +140,10 @@ vim /etc/profile
 # Start
 ulimit -SHn 1024000
 # End
+
+restorecon -v /etc/resolv.conf
+restorecon -v /etc/hosts
+restorecon -v /etc/hostname
+timedatectl set-timezone Asia/Shanghai
+timedatectl set-ntp yes
 ## supervisord END

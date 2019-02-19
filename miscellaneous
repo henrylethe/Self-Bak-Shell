@@ -57,6 +57,8 @@ reboot
 
 yum -y remove kernel kernel-tools kernel-tools-libs kernel-devel kernel-headers
 yum --enablerepo=elrepo-kernel -y install kernel-ml-tools kernel-ml-tools-libs kernel-ml-devel kernel-ml-headers
+timedatectl set-timezone Asia/Shanghai
+timedatectl set-ntp yes
 
 vim /etc/sysctl.conf
 # Start
@@ -140,12 +142,13 @@ vim /etc/profile
 # Start
 ulimit -SHn 1024000
 # End
+## supervisord END
 
+## Some fixes
 restorecon -v /etc/resolv.conf
 restorecon -v /etc/hosts
 restorecon -v /etc/hostname
 semanage fcontext -a -t net_conf_t /etc/sysconfig/network-scripts/ifcfg-eth0
 restorecon -R /etc/sysconfig/network-scripts/ifcfg-eth0
-timedatectl set-timezone Asia/Shanghai
-timedatectl set-ntp yes
-## supervisord END
+systemctl disable kdump
+systemctl disable auditd

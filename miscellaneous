@@ -33,7 +33,6 @@ firewall-cmd --permanent --add-service=shadowsocks
 firewall-cmd --permanent --remove-service=ssh
 firewall-cmd --permanent --remove-service=dhcpv6-client
 firewall-cmd --permanent --add-masquerade
-firewall-cmd --reload
 
 # Change SSH port
 vim /etc/ssh/sshd_config

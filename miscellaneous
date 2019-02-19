@@ -113,12 +113,18 @@ sysctl net.ipv4.tcp_congestion_control
 ## BBR END
 
 ## supervisord START
-yum -y install openssl-devel gcc swig python-devel autoconf libtool libevent python-setuptools python-pip
+yum -y install yum-cron openssl-devel gcc swig python-devel autoconf libtool libevent python-setuptools python-pip
 yum -y groupinstall "Development Tools"
 pip install --upgrade pip
 pip install supervisor M2Crypto greenlet gevent
 echo_supervisord_conf > /etc/supervisord.conf
 mkdir /var/log/supervisor/
+
+vim /etc/yum/yum-cron.conf
+# change 'apply_updates' to 'yes'
+
+systemctl enable yum-cron.service
+systemctl start yum-cron.service
 
 vim /etc/rc.local
 # Start
@@ -152,3 +158,4 @@ semanage fcontext -a -t net_conf_t /etc/sysconfig/network-scripts/ifcfg-eth0
 restorecon -R /etc/sysconfig/network-scripts/ifcfg-eth0
 systemctl disable kdump
 systemctl disable auditd
+systemctl disable postfix

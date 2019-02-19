@@ -144,6 +144,8 @@ ulimit -SHn 1024000
 restorecon -v /etc/resolv.conf
 restorecon -v /etc/hosts
 restorecon -v /etc/hostname
+semanage fcontext -a -t net_conf_t /etc/sysconfig/network-scripts/ifcfg-eth0
+restorecon -R /etc/sysconfig/network-scripts/ifcfg-eth0
 timedatectl set-timezone Asia/Shanghai
 timedatectl set-ntp yes
 ## supervisord END

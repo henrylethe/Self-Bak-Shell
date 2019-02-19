@@ -1,4 +1,16 @@
 ## firewalld START
+# Change SSH port
+vim /etc/ssh/sshd_config
+# Start
+Port $port
+# End
+
+# Notify SELinux
+yum -y install policycoreutils-python
+semanage port -a -t ssh_port_t -p tcp $port
+# Check the status
+semanage port -l | grep ssh
+
 yum -y update
 yum -y install epel-release
 
@@ -33,18 +45,6 @@ firewall-cmd --permanent --add-service=shadowsocks
 firewall-cmd --permanent --remove-service=ssh
 firewall-cmd --permanent --remove-service=dhcpv6-client
 firewall-cmd --permanent --add-masquerade
-
-# Change SSH port
-vim /etc/ssh/sshd_config
-# Start
-Port $port
-# End
-
-# Notify SELinux
-yum -y install policycoreutils-python
-semanage port -a -t ssh_port_t -p tcp $port
-# Check the status
-semanage port -l | grep ssh
 ## firewalld END
 
 ## BBR START

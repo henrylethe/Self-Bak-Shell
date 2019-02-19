@@ -111,8 +111,10 @@ sysctl net.ipv4.tcp_congestion_control
 ## BBR END
 
 ## supervisord START
-yum -y install python-setuptools
-easy_install supervisor
+yum -y install openssl-devel gcc swig python-devel autoconf libtool libevent python-setuptools python-pip
+yum -y groupinstall "Development Tools"
+pip install --upgrade pip
+pip install supervisor M2Crypto greenlet gevent
 echo_supervisord_conf > /etc/supervisord.conf
 mkdir /var/log/supervisor/
 
@@ -122,4 +124,20 @@ supervisord -c /etc/supervisord.conf
 # End
 
 chmod +x /etc/rc.local
+
+vim /etc/security/limits.conf
+# Start
+*               soft    nofile           512000
+*               hard    nofile           1024000
+# End
+
+vim /etc/pam.d/common-session
+# Start
+session required pam_limits.so
+# End
+
+vim /etc/profile
+# Start
+ulimit -SHn 1024000
+# End
 ## supervisord END
